@@ -4,7 +4,7 @@
 #include <csignal>
 #include <unistd.h>
 
-#include <U8g2lib.h>
+#include "U8g2lib.h"
 #include <cstdint>
 
 using namespace std;
