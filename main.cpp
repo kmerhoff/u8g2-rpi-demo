@@ -25,18 +25,18 @@ int dc_pin = 40;        //Command/data: 240S128 pin 8
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Screen init
-U8G2_T6963_240X128_F_8080 screen_1(U8G2_R0, d0_pin, d1_pin, d2_pin, d3_pin, d4_pin, d5_pin, d6_pin, d7_pin, wr_pin, cs_1_pin, dc_pin);
+u8g2_t screen_1;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Drawing Functions
-void drawPage1(u8g2 *u8g2) {
+void drawPage1(u8g2_t *u8g2) {
     u8g2_ClearBuffer(u8g2);
     u8g2.SetFont(u8g2_font_ncenB24_mf);
     u8g2.drawStr(0, 40, "FORD");
     u8g2_SendBuffer(u8g2);
 }
 
-void drawPage2(u8g2 *u8g2) {
+void drawPage2(u8g2_t *u8g2) {
     u8g2_ClearBuffer(u8g2);
     u8g2.SetFont(u8g2_font_ncenB24_mf);
     u8g2.drawStr(0, 40, "BRONCO");
@@ -46,7 +46,11 @@ void drawPage2(u8g2 *u8g2) {
 //Setup
 /* u8g2.begin() is required and will sent the setup/init sequence to the display */
 void setup() {
-  screen_1.begin();
+    u8g2_Setup_t6963_240x128_f(&screen_1, U8G2_R0, u8x8_byte_8bit_8080mode, uC specific);  // init u8g2 structure
+    u8g2_InitDisplay(&screen_1); // send init sequence to the display, display is in sleep mode after this,
+    u8g2_SetPowerSave(&screen_1, 0); // wake up display
+    u8g2_ClearDisplay(&screen_1);
+    
 }
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Main
