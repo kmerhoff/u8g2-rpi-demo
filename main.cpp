@@ -4,8 +4,8 @@
 #include <csignal>
 #include <unistd.h>
 
-#include "U8g2lib.h"
-#include <U8x8lib.h>
+#include <u8g2.h>
+#include <cstdint.h>
 
 using namespace std;
 
