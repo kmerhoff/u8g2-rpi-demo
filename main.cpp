@@ -5,7 +5,7 @@
 #include <unistd.h>
 
 #include <u8g2.h>
-#include <cstdint.h>
+#include <cstdint>
 
 using namespace std;
 
